@@ -7,9 +7,7 @@ function timeLeft(){
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
     }
-    function stop() {
-      clearInterval(intervalId);
-      }
+    
   
   
     function decrement() {
@@ -25,79 +23,81 @@ function timeLeft(){
             stop()
         }
     }
-      run()
-    }
-    
-  
-  
-  
-    var myQuestions = [
-    {
-        question: "What's the capitail of Minnesota?",
-        answers: {
-            a: 'Minneapolis ',
-            b: 'St. Paul ',
-            c: 'Bloomington ' ,
-            d: 'Edina ',
-        },
-        correctAnswer: 'a'
-    },
-    {
-        question: "Minnesota is the land of _____?",
-        answers: {
-            a: 'The North ',
-            b: 'Nice People ',
-            c: '10,000 Lakes ' ,
-            d: 'Burgers ',
-        },
-        correctAnswer: 'c'
-    },
-    {
-        question: "What's Minnesotsas NFL team?",
-        answers: {
-            a: 'Eagles ',
-            b: 'Vikings ',
-            c: 'Turtles ',
-            d: 'Bears ',
-        },
-        correctAnswer: 'b'
-    },
-    {
-        question: "What was the orginal name of St. Paul?",
-        answers: {
-            a: 'Pigs Eye ',
-            b: 'Hibbing ',
-            c: 'River Town ',
-            d: 'Pigs Tale ',
-        },
-        correctAnswer: 'a'
-    },
-    {
-        question: "The Mall of America is located in which city?",
-        answers: {
-            a: 'Eden Praire',
-            b: 'Edina',
-            c: 'Bloomington',
-            d: 'St. Paul',
-        },
-        correctAnswer: 'c'
-    },
-    {
-        question: "What two cities make up the Twin Cities",
-        answers: {
-            a: 'Wyzeta, Eden Praire',
-            b: 'St. Paul, Bloominton',
-            c: 'Edin, Minneapolis',
-            d: 'Minneapolis, St. Paul ',
-        },
-        correctAnswer: 'd'
+    function stop() {
+        clearInterval(intervalId);
         }
-    ];
+
+      run()
+}
+    
+
+var myQuestions = [
+{
+    question: "What's the capitail of Minnesota?",
+    answers: {
+        a: 'Minneapolis ',
+        b: 'St. Paul ',
+        c: 'Bloomington ' ,
+        d: 'Edina ',
+    },
+    correctAnswer: 'a'
+},
+{
+    question: "Minnesota is the land of _____?",
+    answers: {
+        a: 'The North ',
+        b: 'Nice People ',
+        c: '10,000 Lakes ' ,
+        d: 'Burgers ',
+    },
+    correctAnswer: 'c'
+},
+{
+    question: "What's Minnesotsas NFL team?",
+    answers: {
+        a: 'Eagles ',
+        b: 'Vikings ',
+        c: 'Turtles ',
+        d: 'Bears ',
+    },
+    correctAnswer: 'b'
+},
+{
+    question: "What was the orginal name of St. Paul?",
+    answers: {
+        a: 'Pigs Eye ',
+        b: 'Hibbing ',
+        c: 'River Town ',
+        d: 'Pigs Tale ',
+    },
+    correctAnswer: 'a'
+},
+{
+    question: "The Mall of America is located in which city?",
+    answers: {
+        a: 'Eden Praire',
+        b: 'Edina',
+        c: 'Bloomington',
+        d: 'St. Paul',
+    },
+    correctAnswer: 'c'
+},
+{
+    question: "What two cities make up the Twin Cities",
+    answers: {
+        a: 'Wyzeta, Eden Praire',
+        b: 'St. Paul, Bloominton',
+        c: 'Edin, Minneapolis',
+        d: 'Minneapolis, St. Paul ',
+    },
+    correctAnswer: 'd'
+    }
+];
+
   
-  
-    var quizContainer = document.getElementById('#quiz');
-    // var resultsContainer = document.getElementById('results');
-    // var submitButton = document.getElementById('submit');
+var quizContainer = document.getElementById('#quiz');
+// var resultsContainer = document.getElementById('results');
+// var submitButton = document.getElementById('submit');
   
 
 function showQuestions(){
@@ -172,4 +172,5 @@ function showResults(){
   showQuestions();
   timeLeft();
   showResults();
+  
   
