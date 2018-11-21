@@ -135,7 +135,8 @@ function timeLeft(){
           }
 
           // finally combine our output list into one string of html and put it on the page
-          quizContainer.innerHTML = output.join('');
+        //   quizContainer.innerHTML = output.join('');
+        $("#quiz").html(output.join(""))
       }
 
 
@@ -143,7 +144,7 @@ function timeLeft(){
           
              
           // gather answer containers from our quiz
-          var answerContainers = quizContainer.querySelectorAll('.answers');
+        //   var answerContainers = quizContainer.querySelectorAll('.answers');
           
           // keep track of user's answers
           var userAnswer = '';
@@ -155,7 +156,8 @@ function timeLeft(){
           for(var i=0; i<questions.length; i++){
 
               // find selected answer
-              userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+              userAnswer = ('')
+                // answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
               
               if(userAnswer===questions[i].correctAnswer){
                   numCorrect++;
@@ -165,9 +167,9 @@ function timeLeft(){
                   numWrong++;
               }
 
-              console.log(numCorrect);
-              console.log(numWrong);
-              console.log(numUq);
+            //   console.log(numCorrect);
+            //   console.log(numWrong);
+            //   console.log(numUq);
 
                     // document.getElementById("#right").textContent = numCorrect;
                     // document.getElementById("#wrong").textContent = numWrong;
@@ -181,11 +183,11 @@ function timeLeft(){
 
       // show questions right away
       showQuestions(questions, quizContainer);
-      
+      showResults(questions, quizContainer, resultsContainer);
       // on submit, show results
-      submitButton.onclick = function(){
-          showResults(questions, quizContainer, resultsContainer);
-      }
+    //   submitButton.onclick = function(){
+          
+      
 
 
 }

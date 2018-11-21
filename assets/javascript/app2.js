@@ -1,5 +1,5 @@
 function timeLeft(){
-    var number = 30;
+    var number = 5;
   
     var intervalId;
   
@@ -7,8 +7,9 @@ function timeLeft(){
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
     }
-    
-  
+    function stop() {
+        clearInterval(intervalId);
+    }
   
     function decrement() {
   
@@ -23,11 +24,13 @@ function timeLeft(){
             stop()
         }
     }
-    function stop() {
-        clearInterval(intervalId);
+   
+    function run(){
+        if (number === 0){
+            stop()
         }
-
-      run()
+    }
+    run()
 }
     
 
@@ -99,78 +102,83 @@ var quizContainer = document.getElementById('#quiz');
 // var resultsContainer = document.getElementById('results');
 // var submitButton = document.getElementById('submit');
   
+function quiz(){
 
-function showQuestions(){
-    // we'll need a place to store the output and the answer choices
-    var output = [];
-    var answers;
+    function showQuestions(){
+        // we'll need a place to store the output and the answer choices
+        var output = [];
+        var answers;
 
-    // for each question...
-    for(var i=0; i<myQuestions.length; i++){
-        
-        // first reset the list of answers
-        answers = [];
+        // for each question...
+        for(var i=0; i<myQuestions.length; i++){
+            
+            // first reset the list of answers
+            answers = [];
 
-        // for each available answer...
-        for(letter in myQuestions[i].answers){
+            // for each available answer...
+            for(letter in myQuestions[i].answers){
 
-            // ...add an html radio button
-            answers.push(
-                '<label>'
-                    + '<input type="radio" name="question'+i+'" value="'+letter+'">'
-                    + letter + ': '
-                    + myQuestions[i].answers[letter]
-                + '</label>'
+                // ...add an html radio button
+                answers.push(
+                    '<label>'
+                        + '<input type="radio" name="question'+i+'" value="'+letter+'">'
+                        + letter + ': '
+                        + myQuestions[i].answers[letter]
+                    + '</label>'
+                );
+            }
+
+            // add this question and its answers to the output
+            output.push(
+                '<div class="question">' + myQuestions[i].question + '</div>'
+                + '<div class="answers">' + answers.join('') + '</div>'
             );
         }
 
-        // add this question and its answers to the output
-        output.push(
-            '<div class="question">' + myQuestions[i].question + '</div>'
-            + '<div class="answers">' + answers.join('') + '</div>'
-        );
+        // finally combine our output list into one string of html and put it on the page
+        // quizContainer.innerHTML = output.join('');
+        $("#quiz").html(output.join(""))
     }
 
-    // finally combine our output list into one string of html and put it on the page
-    // quizContainer.innerHTML = output.join('');
-    $("#quiz").html(output.join(""))
-}
 
-
-function showResults(){
+    function showResults(){
+            
+        // keep track of user's answers
+        var userAnswer = '';
+        var numCorrect = 0;
+        var numWrong = 0;
+        var numUq = 0;
         
-    // keep track of user's answers
-    var userAnswer = '';
-    var numCorrect = 0;
-    var numWrong = 0;
-    var numUq = 0;
-    
-    // for each question...
-    for(var i=0; i<myQuestions.length; i++){
+        // for each question...
+        for(var i=0; i<myQuestions.length; i++){
 
-        // find selected answer
-        userAnswer = ('')
-        
-        if(userAnswer===myQuestions[i].correctAnswer){
-            numCorrect++;
-        } else if (userAnswer!==myQuestions[i].answers){
-            numUq++;
-        } else{
-            numWrong++;
+            // find selected answer
+            userAnswer = ('')
+            
+            if(userAnswer===myQuestions[i].correctAnswer){
+                numCorrect++;
+            } else if (userAnswer!==myQuestions[i].answers){
+                numUq++;
+            } else{
+                numWrong++;
+            }
+            // console.log(numCorrect);
+            // console.log(numWrong);
+            // console.log(numUq);
+
         }
-        // console.log(numCorrect);
-        // console.log(numWrong);
-        // console.log(numUq);
-
+        // show number of correct answers out of total
+        $("#right").text(numCorrect);
+        $("#wrong").text(numWrong);
+        $("#ua").text(numUq);
     }
-    // show number of correct answers out of total
-    $("#right").text(numCorrect);
-    $("#wrong").text(numWrong);
-    $("#ua").text(numUq);
+    showQuestions();
+    showResults();
+
 }
-  
-  showQuestions();
-  timeLeft();
-  showResults();
+
+quiz();
+timeLeft();
+
   
   
