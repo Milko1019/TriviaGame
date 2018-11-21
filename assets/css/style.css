@@ -1,0 +1,29 @@
+h1, h2 {
+    color: dimgray;
+    font-style: inherit;
+}
+
+body {
+    background-image: url("https://www.visittheusa.com/sites/default/files/styles/hero_m_1300x700/public/images/hero_media_image/2016-11/HERO%201%20-%20Stone%20Arch_Weave%20copy_Web72DPI.jpg?itok=DwhsSJrc");
+    /* background-color: bisque; */
+    text-align: center;
+    font-family: serif;
+}
+
+#wrapper {
+    margin: 178px;
+    padding: 44px;
+    background-color: ghostwhite;
+    opacity: .825;
+    margin-top: 100px;
+    border-style: double;
+}
+
+.answers{
+    padding: 10px;
+
+}
+
+label{
+    margin: 10px;
+}
